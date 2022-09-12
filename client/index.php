@@ -1,10 +1,7 @@
 <?php
 
-/* Je fait ici un require de commande.php ce qui signifie que ma page index.php contient mon fichier de commande */
 require("config/commandes.php");
 
-
-/* ici ma variable $mesProduits et égale à ma foncrion afficher que j'ai definie dans commande.php et elle me permet donc de récuperer mes produit et de me les afficher en tableau */
   $Produits=afficher();
 
 ?>
@@ -84,16 +81,16 @@ require("config/commandes.php");
       <?php foreach($Produits as $produit): ?> 
         <div class="col">
           <div class="card shadow-sm">
-            <h3><?= /* Ici grace à mon ouverture de balise et grace à cette commande ci $produit->nom je peux spécifier le nom de chaque produit */$produit->nom ?></h3>
-            <img src="<?=/* Ici grace à mon ouverture de balise et grace à cette commande ci $produit->image je peux spécifier l'image de chaque produit */ $produit->image ?>" style="width: 24%">
+            <h3><?= $produit->nom ?></h3>
+            <img src="<?= $produit->image ?>" style="width: 24%">
 
             <div class="card-body">
-              <p class="card-text"><?= /* Ici grace à cette commande ci $produit->description je peux spécifier la description de chaque produit */ $produit->description, 0, 160; ?>...</p>
+              <p class="card-text"><?= substr($produit->description, 0, 160); ?>...</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a href="produit.php?pdt=<?= $produit->id ?>"><button type="button" class="btn btn-sm btn-success">Voir plus</button></a>
                 </div>
-                <small class="text" style="font-weight: bold;"><?= /* Ici grace à mon ouverture de balise et grace à cette commande ci $produit->prix je peux spécifier le prix de chaque produit */ $produit->prix ?> €</small>
+                <small class="text" style="font-weight: bold;"><?= $produit->prix ?> €</small>
               </div>
             </div>
           </div>
